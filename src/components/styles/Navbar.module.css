@@ -1,0 +1,16 @@
+.navbar {
+    padding: 15px 20px;
+    background: #E57373;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+a {
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    text-decoration: none;
+}
