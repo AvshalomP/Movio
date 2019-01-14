@@ -1,0 +1,12 @@
+.imgFooter {
+    display: flex;
+    justify-content: space-between;
+    background: white;
+    border-radius: 0 0 3px 3px;
+    box-shadow: 0 1px #ececec;
+    padding: 10px 15px;
+}
+
+.hoverOpacity:hover {
+    opacity: 0.8;
+}

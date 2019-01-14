@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './styles/MovieCard.module.css';
+import styles from '../styles/MovieCard.module.css';
 
 const MovieDetails = (props) => {
     const { title, year, runtime, genre, director } = props;

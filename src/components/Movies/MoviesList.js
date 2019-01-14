@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './styles/MovieList.module.css';
+import styles from '../styles/MovieList.module.css';
 //components
 import MovieCard from './MovieCard';
 

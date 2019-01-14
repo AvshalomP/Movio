@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import styles from './styles/Home.module.css';
 //components
-import MoviesList from './MoviesList';
+import MoviesList from './Movies/MoviesList';
 
 class Home extends Component {
     render(){
         return (
-            <div className={styles.container}>
+            <div>
+                <h2 className={styles.title}>Top Movies</h2>
                 <MoviesList movies={movies}/>
             </div>
         )
