@@ -7,6 +7,10 @@
 .card {
     margin: 20px;
     width: 171px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 .card:hover {
@@ -31,24 +35,21 @@
 }
 
 .details {
-    padding: 0 10px;
-    font-size: 11px;
     color: #4A4A4A;
+    font-size: 11px;
+    padding: 5px 10px;
 }
 
-.details h3 {
+h3 {
+    color: #4A4A4A;
     font-weight: 700;
+    font-size: 12px;
     margin-top: 10px;
+    padding-left: 7px;
 }
 
 .details div {
     margin: 4px 0;
-}
-
-.textOverflow {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 @media screen and (max-width: 1100px) {
