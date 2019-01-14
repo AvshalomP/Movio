@@ -6,11 +6,12 @@
 
 .card {
     margin: 20px;
+    width: 171px;
 }
 
 .card:hover {
-    border-top: 1px solid #e6eaec;
-    border-bottom: 1px solid #e6eaec;
+    border-top: 1px solid #F1F5F7;
+    border-bottom: 2px solid #E57373;
 }
 
 .imageBox {
@@ -68,7 +69,16 @@
     }
 }
 
-@media screen and (max-width: 560px) {
+@media screen and (max-width: 460px) {
+    .card {
+        width: 221px;
+    }
+
+    .imageBox {
+        height: 292px;
+        width: 221px;
+    }
+
     .cardContainer {
         width: 100%;
     }

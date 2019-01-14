@@ -5,9 +5,23 @@
     background: white;
     border-radius: 0 0 3px 3px;
     box-shadow: 0 1px #ececec;
-    padding: 10px 15px;
+    width: 171px;
 }
 
-.hoverOpacity:hover {
+.editIcon, .removeIcon {
+    padding: 10px;
+}
+
+.editIcon:hover, .removeIcon:hover {
     opacity: 0.8;
+}
+
+@media screen and (max-width: 460px) {
+    .imgFooter {
+        width: 221px;
+    }
+
+    .editIcon, .removeIcon {
+        padding: 12px 25px;
+    }
 }
