@@ -1,16 +1,29 @@
 .navbar {
-    padding: 15px 20px;
-    background: #E57373;
+    padding: 15px 30px;
+    background: white;
 }
 
 .container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 a {
-    color: white;
+    color: #E57373;
     font-weight: bold;
     font-size: 18px;
     text-decoration: none;
+}
+
+.addBtn {
+    background: #E57373;
+    color: white;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.addBtn a {
+    color: white;
+    font-size: 16px;
 }

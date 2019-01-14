@@ -6,7 +6,12 @@ const Navbar = (props) => {
     return (
         <nav className={styles.navbar}>
             <div className={styles.container}>
-                <Link to="/">Movio</Link>
+                <Link to="/movies">Movio</Link>
+                <div>
+                    <div className={styles.addBtn}>
+                        <Link to="/movie/new">+ Add New</Link>
+                    </div>
+                </div>
             </div>
         </nav>
     )

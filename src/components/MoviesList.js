@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import styles from './styles/MovieList.module.css';
 //components
-import Movie from './Movie';
+import MovieCard from './MovieCard';
 
 class MoviesList extends Component {
 
     render(){
         const movies = this.props.movies.map( movie => (
-            <Movie key={movie.id} title={movie.title}/>
+            <MovieCard key={movie.id}
+                       title={movie.title} year={movie.year}
+                       runtime={movie.runtime} genre={movie.genre}
+                       director={movie.director} poster={movie.poster}
+            />
         ));
 
         return (
