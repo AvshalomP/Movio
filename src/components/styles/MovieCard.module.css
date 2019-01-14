@@ -9,8 +9,8 @@
 }
 
 .card:hover {
-    border: 1px solid #e6eaec;
-    border-radius: 3px;
+    border-top: 1px solid #e6eaec;
+    border-bottom: 1px solid #e6eaec;
 }
 
 .imageBox {
