@@ -7,7 +7,7 @@ class Home extends Component {
     render(){
         return (
             <div>
-                <h2 className={styles.title}>Top Movies</h2>
+                <div className={styles.title}>Top Movies</div>
                 <MoviesList />
             </div>
         )
