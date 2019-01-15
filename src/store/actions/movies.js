@@ -1,10 +1,15 @@
 import { apiCall } from "../../services/api";
-import { UPDATE_MOVIES } from "../actionTypes";
+import { UPDATE_MOVIES, REMOVE_MOVIE } from "../actionTypes";
 
 /* Action Creators */
 const updateMovies = (movies) => ({
     type: UPDATE_MOVIES,
     movies
+});
+
+export const deleteMovie = (id) => ({
+    type: REMOVE_MOVIE,
+    id
 });
 
 
@@ -25,3 +30,6 @@ export const fetchMovies = () => {
         )
     }
 };
+
+
+

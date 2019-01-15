@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styles from '../styles/MovieList.module.css';
 import { connect } from 'react-redux';
-import { fetchMovies } from "../../store/actions/movies";
+import { fetchMovies, deleteMovie } from "../../store/actions/movies";
 //components
 import MovieCard from './MovieCard';
 
@@ -13,11 +13,13 @@ class MoviesList extends Component {
     }
 
     render(){
+        const { deleteMovie } = this.props;
         const movies = this.props.movies.map( movie => (
             <MovieCard key={movie.imdbID}
                        title={movie.Title} year={movie.Year}
                        runtime={movie.Runtime} genre={movie.Genre}
                        director={movie.Director} poster={movie.Poster}
+                       deleteMovie={deleteMovie.bind(this, movie.imdbID)}
             />
         ));
 
@@ -35,4 +37,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { fetchMovies })(MoviesList);
+export default connect(mapStateToProps, { fetchMovies, deleteMovie })(MoviesList);
