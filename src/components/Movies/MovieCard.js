@@ -6,18 +6,19 @@ import ImageFooter from './ImageFooter';
 
 
 const MovieCard = (props) => {
-    const { poster, title, deleteMovie } = props;
+    const { movie, deleteMovie } = props;
+
     return (
         <div className={styles.cardContainer}>
             <div className={styles.card}>
                 <div>
                     <div className={styles.imageBox}>
-                        <img src={poster} alt=""/>
+                        <img src={movie.Poster} alt=""/>
                     </div>
-                    <ImageFooter deleteMovie={deleteMovie} title={title}/>
-                    <h3>{title}</h3>
+                    <ImageFooter deleteMovie={deleteMovie} movie={movie}/>
+                    <h3>{movie.Title}</h3>
                 </div>
-                <MovieDetails {...props}/>
+                <MovieDetails movie={movie}/>
             </div>
         </div>
     )

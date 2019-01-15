@@ -9,11 +9,32 @@
 }
 
 .editIcon, .removeIcon {
-    padding: 10px;
+    padding: 10px 15px;
 }
 
 .editIcon:hover, .removeIcon:hover {
     opacity: 0.8;
+}
+
+.formPadding {
+    padding-top: 10px;
+    padding-left: 60px;
+    padding-right: 110px;
+}
+
+.inputWidth {
+    max-width: 100px;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flexColumn {
+    display: flex;
+    flex-direction: column;
 }
 
 @media screen and (max-width: 460px) {

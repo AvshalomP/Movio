@@ -2,12 +2,12 @@ import React from 'react';
 import styles from '../styles/MovieCard.module.css';
 
 const MovieDetails = (props) => {
-    const { year, runtime, genre, director } = props;
+    const { Year, Runtime, Genre, Director } = props.movie;
     return (
         <div className={styles.details}>
-            <div>{runtime}</div>
-            <div>{genre}</div>
-            <div>{`${director}, ${year}`}</div>
+            <div>{Runtime}</div>
+            <div>{Genre}</div>
+            <div>{`${Director}, ${Year}`}</div>
         </div>
     )
 };
