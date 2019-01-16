@@ -24,19 +24,18 @@
     padding: 20px 30px;
 }
 
-.inputWidth {
-    max-width: 100px;
-}
+@media screen and (max-width: 560px) {
+    h4{
+        font-size: 26px;
+    }
 
-.flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+    .editFormPadding {
+        padding: 10px;
+    }
 
-.flexColumn {
-    display: flex;
-    flex-direction: column;
+    .deleteFormPadding {
+        padding: 10px;
+    }
 }
 
 @media screen and (max-width: 460px) {
@@ -46,5 +45,9 @@
 
     .editIcon, .removeIcon {
         padding: 12px 25px;
+    }
+
+    h4{
+        font-size: 20px;
     }
 }

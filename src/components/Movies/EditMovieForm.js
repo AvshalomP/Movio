@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from '../styles/ImageFooter.module.css';
+import styles from '../styles/EditMovieForm.module.css';
 import { editMovie } from '../../store/actions/movies';
 import { connect } from 'react-redux';
 
