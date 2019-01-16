@@ -1,5 +1,5 @@
 .navbar {
-    padding: 15px 30px;
+    padding: 25px 30px;
     background: white;
 }
 
@@ -21,6 +21,10 @@ a {
     color: white;
     border-radius: 20px;
     padding: 10px 15px;
+}
+
+.addBtn:hover {
+    opacity: 0.9;
 }
 
 .addBtn a {

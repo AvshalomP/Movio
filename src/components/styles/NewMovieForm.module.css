@@ -1,0 +1,45 @@
+.FormPadding {
+    padding: 10px 100px 20px 60px;
+}
+
+.inputWidth {
+    max-width: 100px;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.flexColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+h4 {
+    margin-bottom: 25px;
+}
+
+@media screen and (max-width: 660px) {
+    .flex {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    h4{
+        font-size: 26px;
+    }
+
+    .FormPadding {
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    h4{
+        font-size: 20px;
+    }
+}
