@@ -4,7 +4,7 @@ import { FaTrashAlt, FaEdit } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
 import { Modal, Button } from 'react-materialize';
 //components
-import EditMovieForm from './EditMovieForm';
+import MovieForm from './MovieForm';
 
 
 const ImageFooter = (props) => {
@@ -18,7 +18,7 @@ const ImageFooter = (props) => {
                     actions={<div><Button type="submit" form={movie.imdbID} modal="close" waves="light" flat>SAVE</Button>
                                   <Button modal="close" waves="light" flat>CANCEL</Button></div>}
                 >
-                    <EditMovieForm movie={movie}/>
+                    <MovieForm movie={movie}/>
                 </Modal>
             </IconContext.Provider>
             <IconContext.Provider value={{color: '#E57373', size: '1.2em'}}>

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../styles/Navbar.module.css';
-import formStyle from '../styles/NewMovieForm.module.css';
+import formStyle from '../styles/MovieForm.module.css';
 import { Modal, Button } from 'react-materialize';
 //components
-import NewMovieForm from '../Movies/NewMovieForm';
+import MovieForm from '../Movies/MovieForm';
 
 const Navbar = () => {
     return (
@@ -19,7 +19,7 @@ const Navbar = () => {
                                         <Button modal="close" waves="light" flat>CANCEL</Button>
                                     </div>}
                     >
-                        <NewMovieForm />
+                        <MovieForm  movie={{Title: "", Director: "", Genre: "", Poster: "", Year: "", Runtime: "", imdbID: ""}}/>
                     </Modal>
                 </div>
             </div>
