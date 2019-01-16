@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import styles from '../styles/NewMovieForm.module.css';
+import { connect } from 'react-redux';
+import { addMovie } from "../../store/actions/movies";
 
 class NewMovieForm extends Component {
     constructor(props){
@@ -24,7 +26,7 @@ class NewMovieForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state)
+        this.props.addMovie({...this.state});
     };
 
     render(){
@@ -62,4 +64,4 @@ class NewMovieForm extends Component {
     }
 }
 
-export default NewMovieForm;
+export default connect(null, {addMovie})(NewMovieForm);

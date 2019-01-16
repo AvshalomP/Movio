@@ -14,8 +14,8 @@ class MoviesList extends Component {
 
     render(){
         const { deleteMovie } = this.props;
-        const movies = this.props.movies.map( (movie, idx) => (
-            <MovieCard key={movie.imdbID} idx={idx} movie={movie}
+        const movies = this.props.movies.map( movie => (
+            <MovieCard key={movie.imdbID} movie={movie}
                        deleteMovie={deleteMovie.bind(this, movie.imdbID)}
             />
         ));
