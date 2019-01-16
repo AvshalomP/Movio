@@ -8,12 +8,26 @@
     width: 171px;
 }
 
-.editIcon, .removeIcon {
+.removeIcon {
     padding: 10px 15px;
+    color: #E57373;
+    cursor: pointer;
 }
 
-.editIcon:hover, .removeIcon:hover {
-    opacity: 0.8;
+.editIcon  {
+    padding: 10px 15px;
+    color: #26A69A;
+    cursor: pointer;
+}
+
+.removeIcon:hover {
+    background: #E57373;
+    color: white;
+}
+
+.editIcon:hover {
+    background: #26A69A;
+    color: white;
 }
 
 .editFormPadding {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../styles/Navbar.module.css';
 import formStyle from '../styles/MovieForm.module.css';
@@ -6,26 +6,37 @@ import { Modal, Button } from 'react-materialize';
 //components
 import MovieForm from '../Movies/MovieForm';
 
-const Navbar = () => {
-    return (
-        <div className={styles.navbar}>
-            <div className={styles.container}>
+
+class Navbar extends Component {
+
+    generateActions = (props, secondBtnName) => {
+        return (
+            <div>
+                <Button modal="close" waves="light" {...props} flat>{secondBtnName}</Button>
+                <Button modal="close" waves="light" flat>CANCEL</Button>
+            </div>
+        )
+    };
+
+    render() {
+        const newMovieForm = 'newMovieForm';
+        const newMovie = {Title: "", Director: "", Genre: "", Poster: "", Year: "", Runtime: "", imdbID: ""};
+
+        return (
+            <div className={styles.navbar}>
                 <Link to="/movies">Movio</Link>
                 <div>
                     <Modal header='Add New Movie' className={formStyle.FormPadding}
                            trigger={<Link className={styles.addBtn} to="/">+ Add New</Link>}
-                           actions={<div>
-                                        <Button type="submit" form='newMovieForm' modal="close" waves="light" flat>SAVE</Button>
-                                        <Button modal="close" waves="light" flat>CANCEL</Button>
-                                    </div>}
+                           actions={this.generateActions({ type: "submit", form: newMovieForm }, "SAVE")}
                     >
-                        <MovieForm  movie={{Title: "", Director: "", Genre: "", Poster: "", Year: "", Runtime: "", imdbID: ""}}/>
+                        <MovieForm  movie={newMovie}/>
                     </Modal>
                 </div>
             </div>
-        </div>
-    )
-};
+        )
+    }
+}
 
 
 export default Navbar;

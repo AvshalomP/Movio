@@ -1,38 +1,45 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styles from '../styles/ImageFooter.module.css';
-import { FaTrashAlt, FaEdit } from 'react-icons/fa';
-import { IconContext } from 'react-icons';
-import { Modal, Button } from 'react-materialize';
+import { Modal, Button, Icon } from 'react-materialize';
 //components
 import MovieForm from './MovieForm';
 
 
-const ImageFooter = (props) => {
-    const { deleteMovie, movie } = props;
+class ImageFooter extends Component {
 
-    return (
-        <div className={styles.imgFooter}>
-            <IconContext.Provider value={{color: '#26a69a', size: '1.4em'}}>
-                <Modal header='Edit Movie' className={styles.editFormPadding}
-                    trigger={<div className={styles.editIcon}><FaEdit /></div>}
-                    actions={<div><Button type="submit" form={movie.imdbID} modal="close" waves="light" flat>SAVE</Button>
-                                  <Button modal="close" waves="light" flat>CANCEL</Button></div>}
+    generateActions = (props, secondBtnName) => {
+        return (
+            <div>
+                <Button modal="close" waves="light" {...props} flat>{secondBtnName}</Button>
+                <Button modal="close" waves="light" flat>CANCEL</Button>
+            </div>
+        )
+    };
+
+    render() {
+        const { deleteMovie, movie } = this.props;
+
+        return (
+            <div className={styles.imgFooter}>
+                <Modal  className={styles.editFormPadding}
+                        header='Edit Movie'
+                        trigger={<div className={styles.editIcon}><Icon>edit</Icon></div>}
+                        actions={this.generateActions({ type: "submit", form: movie.imdbID }, "SAVE")}
                 >
                     <MovieForm movie={movie}/>
                 </Modal>
-            </IconContext.Provider>
-            <IconContext.Provider value={{color: '#E57373', size: '1.2em'}}>
-                <Modal header='Confirm Delete' className={styles.deleteFormPadding}
-                    trigger={<div className={styles.removeIcon}><FaTrashAlt/></div>}
-                    actions={<div><Button modal="close" waves="light" onClick={deleteMovie} flat>OK</Button>
-                                  <Button modal="close" waves="light" flat>CANCEL</Button></div>}
+                <Modal  className={styles.deleteFormPadding}
+                        header='Confirm Delete'
+                        trigger={<div className={styles.removeIcon}><Icon>delete</Icon></div>}
+                        actions={this.generateActions({ onClick: deleteMovie }, "OK")}
                 >
                     <p>Are you sure you want to delete the movie "{movie.Title}"?</p>
                 </Modal>
-            </IconContext.Provider>
-        </div>
-    )
-};
+            </div>
+        )
+
+    }
+}
 
 
 export default ImageFooter;

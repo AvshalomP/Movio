@@ -1,9 +1,6 @@
 .navbar {
     padding: 25px 30px;
     background: white;
-}
-
-.container {
     display: flex;
     justify-content: space-between;
     align-items: center;
