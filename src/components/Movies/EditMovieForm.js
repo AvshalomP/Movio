@@ -1,63 +1,59 @@
 import React, { Component } from 'react';
 import styles from '../styles/ImageFooter.module.css';
+import { editMovie } from '../../store/actions/movies';
+import { connect } from 'react-redux';
 
 class EditMovieForm extends Component {
     constructor(props){
         super(props);
 
-        const { imdbID, Title, Director, Genre, Year, Runtime } = props.movie;
-
         this.state = {
-            imdbID,
-            Title,
-            Director,
-            Genre,
-            Year,
-            Runtime
+            updatedMovie: props.movie
         }
     }
 
     handleChange = (e) => {
       this.setState({
-          [e.target.name]: e.target.value
-      })
+        updatedMovie: {
+            ...this.state.updatedMovie,
+            [e.target.name]: e.target.value
+        }
+    })
     };
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log("SUBMIT");
+        this.props.editMovie(this.state.updatedMovie);
     };
 
     render(){
+        const { imdbID, Title, Director, Genre, Year, Runtime } = this.state.updatedMovie;
+
         return (
-            <form id="editMovie" onSubmit={ this.handleSubmit }>
-                <div>
-                    <label>Title:</label>
-                    <input type="text" name="Title"  onChange={this.handleChange} value={this.state.Title} />
-                </div>
+            <form id={imdbID} onSubmit={ this.handleSubmit }>
+                <label>Title:</label>
+                <input type="text" name="Title"  onChange={this.handleChange} value={Title} />
                 <div className={styles.flex}>
                     <div>
                         <label>Director:</label>
-                        <input type="text" name="Director" onChange={this.handleChange} value={this.state.Director} />
+                        <input type="text" name="Director" onChange={this.handleChange} value={Director} />
                     </div>
                     <div className={styles.flexColumn}>
                         <label>Year:</label>
                         <input type="number" name="Year" className={styles.inputWidth}
-                               onChange={this.handleChange} value={this.state.Year} />
+                               onChange={this.handleChange} value={Year} />
                     </div>
                     <div className={styles.flexColumn}>
                         <label>Runtime:</label>
                         <input type="text" name="Runtime" className={styles.inputWidth}
-                               onChange={this.handleChange} value={this.state.Runtime} />
+                               onChange={this.handleChange} value={Runtime} />
                     </div>
                 </div>
-                <div>
-                    <label>Genre:</label>
-                    <input type="text" name="Genre" onChange={this.handleChange} value={this.state.Genre} />
-                </div>
+                <label>Genre:</label>
+                <input type="text" name="Genre" onChange={this.handleChange} value={Genre} />
             </form>
         )
     }
 }
 
-export default EditMovieForm;
+export default connect(null, {editMovie})(EditMovieForm);

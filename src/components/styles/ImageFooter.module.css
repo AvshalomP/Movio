@@ -16,10 +16,12 @@
     opacity: 0.8;
 }
 
-.formPadding {
-    padding-top: 10px;
-    padding-left: 60px;
-    padding-right: 110px;
+.editFormPadding {
+    padding: 10px 100px 20px 60px;
+}
+
+.deleteFormPadding {
+    padding: 20px 30px;
 }
 
 .inputWidth {

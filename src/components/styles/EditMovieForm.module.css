@@ -1,0 +1,14 @@
+.inputWidth {
+    max-width: 100px;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flexColumn {
+    display: flex;
+    flex-direction: column;
+}
