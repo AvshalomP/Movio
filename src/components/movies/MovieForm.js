@@ -11,6 +11,7 @@ class MovieForm extends Component {
 
         const { Title, Director, Genre, Poster, Year, Runtime, imdbID } = props.movie;
 
+
         this.state = {
             Title,
             Director,

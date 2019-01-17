@@ -4,7 +4,7 @@ import styles from '../styles/Navbar.module.css';
 import formStyle from '../styles/MovieForm.module.css';
 import { Modal, Button } from 'react-materialize';
 //components
-import MovieForm from '../Movies/MovieForm';
+import MovieForm from '../movies/MovieForm';
 
 
 class Navbar extends Component {

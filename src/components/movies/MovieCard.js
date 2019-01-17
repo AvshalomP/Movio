@@ -3,6 +3,7 @@ import styles from '../styles/MovieCard.module.css';
 //components
 import MovieDetails from './MovieDetails';
 import ImageFooter from './ImageFooter';
+import DefaultPoster from '../../images/noPoster.png';
 
 
 const MovieCard = (props) => {
@@ -13,7 +14,7 @@ const MovieCard = (props) => {
             <div className={styles.card}>
                 <div>
                     <div className={styles.imageBox}>
-                        <img src={movie.Poster} alt=""/>
+                        <img src={ movie.Poster ? movie.Poster : DefaultPoster } alt=""/>
                     </div>
                     <ImageFooter deleteMovie={deleteMovie} movie={movie}/>
                     <h3>{movie.Title}</h3>
