@@ -26,9 +26,10 @@ class Navbar extends Component {
             <div className={styles.navbar}>
                 <Link to="/movies">Movio</Link>
                 <div>
-                    <Modal header='Add New Movie' className={formStyle.FormPadding}
-                           trigger={<Link className={styles.addBtn} to="/">+ Add New</Link>}
-                           actions={this.generateActions({ type: "submit", form: newMovieForm }, "SAVE")}
+                    <Modal  className={formStyle.FormPadding}
+                            header='Add New Movie'
+                            trigger={<Link className={styles.addBtn} to="/">+ Add New</Link>}
+                            actions={this.generateActions({ type: "submit", form: newMovieForm }, "SAVE")}
                     >
                         <MovieForm  movie={newMovie}/>
                     </Modal>

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import styles from '../styles/MovieForm.module.css';
 import { connect } from 'react-redux';
 import { addMovie, editMovie } from "../../store/actions/movies";
+//components
+import Input from '../generic/Input';
 
 class MovieForm extends Component {
     constructor(props){
@@ -38,32 +40,19 @@ class MovieForm extends Component {
 
         return (
             <form id={this.props.movie.imdbID ? imdbID : "newMovieForm"} onSubmit={ this.handleSubmit }>
-                <label>Title:</label>
-                <input type="text" name="Title"  onChange={this.handleChange} value={Title} />
-                <label>Director:</label>
-                <input type="text" name="Director" onChange={this.handleChange} value={Director} />
-                <label>Genre:</label>
-                <input type="text" name="Genre" onChange={this.handleChange} value={Genre} />
-                <label>Poster URL:</label>
-                <input type="text" name="Poster" disabled={this.props.movie.Poster ? "disabled" : ""}
+                <Input type="text" name="Title" onChange={this.handleChange} value={Title}/>
+                <Input type="text" name="Director" onChange={this.handleChange} value={Director} />
+                <Input type="text" name="Genre" onChange={this.handleChange} value={Genre} />
+                <Input type="text" name="Poster" disabled={this.props.movie.Poster ? "disabled" : ""}
                        onChange={this.handleChange} value={Poster} />
                 <div className={styles.flex}>
-                    <div className={styles.flexColumn}>
-                        <label>Year:</label>
-                        <input type="number" name="Year" className={styles.inputWidth}
-                               onChange={this.handleChange} value={Year} />
-                    </div>
-                    <div className={styles.flexColumn}>
-                        <label>Runtime:</label>
-                        <input type="text" name="Runtime" className={styles.inputWidth}
-                               onChange={this.handleChange} value={Runtime} />
-                    </div>
-                    <div className={styles.flexColumn}>
-                        <label>imdb ID:</label>
-                        <input type="text" name="imdbID" className={styles.inputWidth}
-                               disabled={this.props.movie.imdbID ? "disabled" : ""}
-                               onChange={this.handleChange} value={imdbID} />
-                    </div>
+                    <Input type="number" name="Year" className={styles.inputWidth}
+                           onChange={this.handleChange} value={Year} />
+                    <Input type="text" name="Runtime" className={styles.inputWidth}
+                           onChange={this.handleChange} value={Runtime} />
+                    <Input type="text" name="imdbID" className={styles.inputWidth}
+                           disabled={this.props.movie.imdbID ? "disabled" : ""}
+                           onChange={this.handleChange} value={imdbID} />
                 </div>
             </form>
         )
