@@ -25,7 +25,7 @@ class MovieForm extends Component {
     };
 
     converStringToTitleCase = (str) => {
-        return str.replace(/[^a-zA-Z :']/g, "").split(' ').map( word => {
+        return str.replace(/[^a-zA-Z0-9 :']/g, "").split(' ').map( word => {
             return word.toLowerCase().charAt(0).toUpperCase() + word.toLowerCase().substring(1)
         }).join(' ')
     };
