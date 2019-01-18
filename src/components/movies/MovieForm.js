@@ -24,7 +24,7 @@ class MovieForm extends Component {
           }
     };
 
-    converStringToTitleCase = (str) => {
+    convertStringToTitleCase = (str) => {
         return str.replace(/[^a-zA-Z0-9 :']/g, "").split(' ').map( word => {
             return word.toLowerCase().charAt(0).toUpperCase() + word.toLowerCase().substring(1)
         }).join(' ')
@@ -32,7 +32,7 @@ class MovieForm extends Component {
 
     handleSubmit = (values ) => {
         const { imdbID } = this.props.movie;
-        const Title = this.converStringToTitleCase(values.Title);   //converting movie title to TitleCase
+        const Title = this.convertStringToTitleCase(values.Title);   //converting movie title to TitleCase
 
         this.props.closeModal();    //closing modal
         imdbID ? this.props.editMovie({...values, Title}) : this.props.addMovie({...values, Title});

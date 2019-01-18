@@ -43,7 +43,7 @@ class ImageFooter extends Component {
                 <Modal  className={styles.deleteFormPadding}
                         header='Confirm Delete'
                         trigger={<div className={styles.removeIcon}><Icon>delete</Icon></div>}
-                        actions={this.generateActions({ onClick: deleteMovie }, "OK")}
+                        actions={this.generateActions({ onClick: deleteMovie, modal: "close" }, "OK")}
                 >
                     <p>Are you sure you want to delete the movie "{movie.Title}"?</p>
                 </Modal>
