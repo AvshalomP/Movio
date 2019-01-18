@@ -1,0 +1,9 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.error {
+    color: red;
+    padding-bottom: 15px;
+}

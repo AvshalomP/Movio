@@ -8,12 +8,23 @@ import MovieForm from '../movies/MovieForm';
 
 
 class Navbar extends Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            isModalOpen: false
+        }
+    }
+
+    handleModalClose = () => {
+        this.setState({ isModalOpen: false });
+    };
 
     generateActions = (props, secondBtnName) => {
         return (
             <div>
-                <Button modal="close" waves="light" {...props} flat>{secondBtnName}</Button>
-                <Button modal="close" waves="light" flat>CANCEL</Button>
+                <Button waves="light" {...props} flat>{secondBtnName}</Button>
+                <Button modal="close" waves="light" {...props} flat>CANCEL</Button>
             </div>
         )
     };
@@ -27,11 +38,12 @@ class Navbar extends Component {
                 <Link to="/movies">Movio</Link>
                 <div>
                     <Modal  className={formStyle.FormPadding}
+                            open={this.state.isModalOpen}
                             header='Add New Movie'
                             trigger={<Link className={styles.addBtn} to="/">+ Add New</Link>}
                             actions={this.generateActions({ type: "submit", form: newMovieForm }, "SAVE")}
                     >
-                        <MovieForm  movie={newMovie}/>
+                        <MovieForm  movie={newMovie} closeModal={this.handleModalClose}/>
                     </Modal>
                 </div>
             </div>

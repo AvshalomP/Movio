@@ -14,11 +14,16 @@ class MoviesList extends Component {
 
     render(){
         const { deleteMovie } = this.props;
-        const movies = this.props.movies.map( movie => (
-            <MovieCard key={movie.imdbID} movie={movie}
-                       deleteMovie={deleteMovie.bind(this, movie.imdbID)}
-            />
-        ));
+        const movies = this.props.movies.map( movie => {
+            const idxOfRuntime = movie.Runtime.indexOf(" ");
+            const Runtime = idxOfRuntime === -1 ? movie.Runtime :movie.Runtime.substring(0, movie.Runtime.indexOf(" "));
+
+            return (
+                <MovieCard key={movie.imdbID} movie={{...movie, Runtime}}
+                           deleteMovie={deleteMovie.bind(this, movie.imdbID)}
+                />
+            )
+        });
 
         return (
             <div className={styles.container}>

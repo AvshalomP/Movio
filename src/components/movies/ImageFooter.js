@@ -6,11 +6,22 @@ import MovieForm from './MovieForm';
 
 
 class ImageFooter extends Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            isModalOpen: false
+        }
+    }
+
+    handleModalClose = () => {
+        this.setState({ isModalOpen: false });
+    };
 
     generateActions = (props, secondBtnName) => {
         return (
             <div>
-                <Button modal="close" waves="light" {...props} flat>{secondBtnName}</Button>
+                <Button waves="light" {...props} flat>{secondBtnName}</Button>
                 <Button modal="close" waves="light" flat>CANCEL</Button>
             </div>
         )
@@ -22,11 +33,12 @@ class ImageFooter extends Component {
         return (
             <div className={styles.imgFooter}>
                 <Modal  className={styles.editFormPadding}
+                        open={this.state.isModalOpen}
                         header='Edit Movie'
                         trigger={<div className={styles.editIcon}><Icon>edit</Icon></div>}
                         actions={this.generateActions({ type: "submit", form: movie.imdbID }, "SAVE")}
                 >
-                    <MovieForm movie={movie}/>
+                    <MovieForm movie={movie} closeModal={this.handleModalClose}/>
                 </Modal>
                 <Modal  className={styles.deleteFormPadding}
                         header='Confirm Delete'
