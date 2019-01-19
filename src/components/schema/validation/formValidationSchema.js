@@ -1,5 +1,7 @@
 import * as Yup from "yup";
 
+const currentYear = (new Date()).getFullYear()+1;
+
 export const formValidationSchema = Yup.object().shape({
     Title: Yup.string()
         .min(2, 'Too Short!')
@@ -13,13 +15,19 @@ export const formValidationSchema = Yup.object().shape({
         .min(2, 'Too Short!')
         .max(70, 'Too Long!')
         .required('Required'),
-    Year: Yup.string()
-        .min(4, 'Too Short!')
-        .max(4, 'Too Long!')
+    Year: Yup.number()
+        .typeError('Must be a number')
+        .positive('Positive number only!')
+        .integer('Decimal number only')
+        .moreThan(999, 'Too Short!')
+        .lessThan(currentYear+1, 'Try less than 2020!')
         .required('Required'),
-    Runtime: Yup.string()
-        .min(2, 'Too Short!')
-        .max(4, 'Too Long!')
+    Runtime: Yup.number()
+        .typeError('Must be a number')
+        .positive('Positive number only!')
+        .integer('Decimal number only')
+        .moreThan(10, 'Too Short!')
+        .lessThan(9999, 'Too Long!')
         .required('Required'),
     Poster: Yup.string()
         .url('Please use a valid URL'),
