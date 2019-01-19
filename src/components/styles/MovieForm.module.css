@@ -18,6 +18,12 @@
     flex-direction: column;
 }
 
+.formBtns {
+    position: absolute;
+    right: 50px;
+    margin-top: 40px;
+}
+
 h4 {
     margin-bottom: 25px;
 }
@@ -34,8 +40,9 @@ h4 {
     }
 
     .FormPadding {
-        padding: 10px;
+        padding: 20px 40px;
     }
+
 }
 
 @media screen and (max-width: 460px) {

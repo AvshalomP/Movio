@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { addMovie, editMovie } from "../../store/actions/movies";
 import { Formik, Form } from 'formik';
 import { formValidationSchema } from "../schema/validation/formValidationSchema";
+import { Button } from 'react-materialize';
 //components
 import Input from '../generic/Input';
 
@@ -30,44 +31,59 @@ class MovieForm extends Component {
         }).join(' ')
     };
 
-    handleSubmit = (values ) => {
+    generateButtons = ({ props, name }, resetForm) => {
+        return (
+            <div className={styles.formBtns}>
+                <Button {...props} flat>{name}</Button>
+                <Button type="button" modal="close" onClick={ () => resetForm() } flat>CANCEL</Button>
+            </div>
+        )
+    };
+
+    handleSubmit = (values, { resetForm }) => {
+        const { editMovie, addMovie, closeModal } = this.props;
         const { imdbID } = this.props.movie;
         const Title = this.convertStringToTitleCase(values.Title);   //converting movie title to TitleCase
 
-        this.props.closeModal();    //closing modal
-        imdbID ? this.props.editMovie({...values, Title}) : this.props.addMovie({...values, Title});
+        closeModal(); //closing modal
+        imdbID ? editMovie({...values, Title}) : addMovie({...values, Title}); //in edit mode imdbID is not passed
+        resetForm();
     };
 
     render(){
-
+        const { movie, formSecondBtn } = this.props;
         return (
                 <Formik
                     initialValues={this.generateInitialValues()}
                     validationSchema={formValidationSchema}
                     onSubmit={this.handleSubmit}
                 >
-                    {({ values, errors, touched }) => (
-                        <Form id={this.props.movie.imdbID ? values.imdbID : values.newFormId}>
-                            <Input name="Title" touched={touched} errors={errors} />
-                            <Input name="Director" touched={touched} errors={errors} />
-                            <Input name="Genre" touched={touched} errors={errors} />
-                            <Input name="Poster" touched={touched} errors={errors}
-                                   disabled={this.props.movie.Poster ? "disabled" : ""}
-                            />
-                            <div className={styles.flex}>
-                                <Input name="Year" label="Year" touched={touched} errors={errors}
-                                       className={styles.inputWidth}
+                    {({ values, errors, touched, resetForm }) => {
+                        return (
+                            <Form id={movie.imdbID ? values.imdbID : values.newFormId}>
+                                <Input name="Title" touched={touched} errors={errors} />
+                                <Input name="Director" touched={touched} errors={errors} />
+                                <Input name="Genre" touched={touched} errors={errors} />
+                                <Input name="Poster" touched={touched} errors={errors}
+                                       disabled={movie.Poster ? "disabled" : ""}
+                                       actions={<div><button/></div>}
                                 />
-                                <Input name="Runtime" touched={touched} errors={errors}
-                                       className={styles.inputWidth}
-                                />
-                                <Input name="imdbID" touched={touched} errors={errors}
-                                       className={styles.inputWidth}
-                                       disabled={this.props.movie.imdbID ? "disabled" : ""}
-                                />
-                            </div>
-                        </Form>
-                    )}
+                                <div className={styles.flex}>
+                                    <Input name="Year" label="Year" touched={touched} errors={errors}
+                                           className={styles.inputWidth}
+                                    />
+                                    <Input name="Runtime" touched={touched} errors={errors}
+                                           className={styles.inputWidth}
+                                    />
+                                    <Input name="imdbID" touched={touched} errors={errors}
+                                           className={styles.inputWidth}
+                                           disabled={movie.imdbID ? "disabled" : ""}
+                                    />
+                                </div>
+                                {this.generateButtons(formSecondBtn, resetForm)}
+                            </Form>
+                        )
+                    }}
                 </Formik>
         )
     }

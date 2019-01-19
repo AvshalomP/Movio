@@ -10,25 +10,27 @@ class ImageFooter extends Component {
         super(props);
 
         this.state = {
-            isModalOpen: false
+            isModalOpen: false,
+            clearForm: false
         }
     }
 
-    handleModalClose = () => {
+    handleModalConfirm = () => {
         this.setState({ isModalOpen: false });
     };
 
     generateActions = (props, secondBtnName) => {
         return (
             <div>
-                <Button waves="light" {...props} flat>{secondBtnName}</Button>
-                <Button modal="close" waves="light" flat>CANCEL</Button>
+                <Button {...props} flat>{secondBtnName}</Button>
+                <Button modal="close" flat>CANCEL</Button>
             </div>
         )
     };
 
     render() {
         const { deleteMovie, movie } = this.props;
+        const formSecondBtn = { name: "SAVE", props: { type: "submit", form: movie.imdbID } };
 
         return (
             <div className={styles.imgFooter}>
@@ -36,9 +38,13 @@ class ImageFooter extends Component {
                         open={this.state.isModalOpen}
                         header='Edit Movie'
                         trigger={<div className={styles.editIcon}><Icon>edit</Icon></div>}
-                        actions={this.generateActions({ type: "submit", form: movie.imdbID }, "SAVE")}
+                        actions={[]}
                 >
-                    <MovieForm movie={movie} closeModal={this.handleModalClose}/>
+                    <MovieForm movie={movie}
+                               closeModal={this.handleModalConfirm}
+                               clearForm={this.state.clearForm}
+                               formSecondBtn={formSecondBtn}
+                    />
                 </Modal>
                 <Modal  className={styles.deleteFormPadding}
                         header='Confirm Delete'
