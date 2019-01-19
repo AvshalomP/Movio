@@ -34,20 +34,42 @@ class MovieForm extends Component {
     generateButtons = ({ props, name }, resetForm) => {
         return (
             <div className={styles.formBtns}>
-                <Button {...props} flat>{name}</Button>
+                <Button {...props} className={styles.btn} flat>{name}</Button>
                 <Button type="button" modal="close" onClick={ () => resetForm() } flat>CANCEL</Button>
             </div>
         )
     };
 
-    handleSubmit = (values, { resetForm }) => {
+    isMovieExist = (value) => {
+        let isExist = false;
+        this.props.movies.forEach( movie => {
+            if(Object.values(movie).indexOf(value) > -1) {
+                isExist = true;
+            }
+        });
+        return isExist;
+    };
+
+    handleSubmit = (values, { resetForm , setFieldError }) => {
         const { editMovie, addMovie, closeModal } = this.props;
         const { imdbID } = this.props.movie;
         const Title = this.convertStringToTitleCase(values.Title);   //converting movie title to TitleCase
 
-        closeModal(); //closing modal
-        imdbID ? editMovie({...values, Title}) : addMovie({...values, Title}); //in edit mode imdbID is not passed
-        resetForm();
+        if(this.isMovieExist(values.Title)) { //check if movie exist
+            setFieldError('Title', 'Already exist');
+        } else if(!imdbID && this.isMovieExist(values.imdbID)) {
+            setFieldError('imdbID', 'Already exist');
+        } else {
+            closeModal();
+            if (imdbID) {    //in edit mode imdbID is not passed
+                editMovie({...values, Title});
+            } else {
+                    addMovie({...values, Title});
+            }
+            resetForm();
+
+        }
+
     };
 
     render(){
@@ -64,10 +86,7 @@ class MovieForm extends Component {
                                 <Input name="Title" touched={touched} errors={errors} />
                                 <Input name="Director" touched={touched} errors={errors} />
                                 <Input name="Genre" touched={touched} errors={errors} />
-                                <Input name="Poster" touched={touched} errors={errors}
-                                       disabled={movie.Poster ? "disabled" : ""}
-                                       actions={<div><button/></div>}
-                                />
+                                <Input name="Poster" touched={touched} errors={errors} />
                                 <div className={styles.flex}>
                                     <Input name="Year" label="Year" touched={touched} errors={errors}
                                            className={styles.inputWidth}
@@ -89,4 +108,10 @@ class MovieForm extends Component {
     }
 }
 
-export default  connect(null, {addMovie, editMovie})(MovieForm);
+function mapStateToProps(state) {
+    return {
+        movies: state.movies
+    }
+}
+
+export default  connect(mapStateToProps, {addMovie, editMovie})(MovieForm);

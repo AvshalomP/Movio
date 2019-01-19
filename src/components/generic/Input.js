@@ -11,9 +11,9 @@ const Input = (props) => {
         <div className={styles.container}>
             <label htmlFor={name}>{title}</label>
             <Field {...props} />
-            {errors[name] && touched[name] ?
+            { errors[name] && touched[name] ?
                 (<div className={styles.error}>{errors[name]}</div>)
-                : null}
+                : null }
         </div>
     )
 };
