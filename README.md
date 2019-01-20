@@ -19,7 +19,7 @@ To see the app in action, go to [Movio](https://movio-t.herokuapp.com)
   
   * Form validation 
   
-  * Fields validation
+  * Field validation
 
 * Responsive web design
 
