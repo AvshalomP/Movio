@@ -15,7 +15,7 @@
 }
 
 .card:hover {
-    border-top: 1px solid #F1F5F7;
+    margin: 19px 19px 21px 21px;
     border-bottom: 2px solid #E57373;
 }
 
