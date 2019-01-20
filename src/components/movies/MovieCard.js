@@ -14,7 +14,7 @@ const MovieCard = (props) => {
             <div className={styles.card}>
                 <div>
                     <div className={styles.imageBox}>
-                        <img src={ movie.Poster ? movie.Poster : DefaultPoster } alt=""/>
+                        <img src={ movie.Poster || DefaultPoster } alt=""/>
                     </div>
                     <ImageFooter deleteMovie={deleteMovie} movie={movie}/>
                     <h3>{movie.Title}</h3>

@@ -53,7 +53,7 @@ class MovieForm extends Component {
     };
 
     validateMovieExist = (values, imdbIDprop, setFieldError) => { //check if movie exist
-        if(!imdbIDprop) {
+        if(!imdbIDprop) { //on add new movie
             if (this.isMovieExist(values.Title)) { //check by Title
                 setFieldError('Title', 'Already exist');
                 return true;
@@ -107,6 +107,7 @@ class MovieForm extends Component {
                                     />
                                 </div>
                                 {this.generateButtons(formSecondBtn, resetForm)}
+                                <ErrorFocus />
                             </Form>
                         )
                     }}
