@@ -7,12 +7,14 @@ import { formValidationSchema } from "../schema/validation/formValidationSchema"
 import { Button } from 'react-materialize';
 //components
 import Input from '../generic/Input';
+import ErrorFocus from '../generic/ErrorFocus';
 
 class MovieForm extends Component {
 
 
     generateInitialValues = () => {
         const { Title, Director, Genre, Poster, Year, Runtime, imdbID } = this.props.movie;
+        const newFormId = "newMovieForm";
         return {
             Title,
             Director,
@@ -21,7 +23,7 @@ class MovieForm extends Component {
             Runtime,
             Poster,
             imdbID,
-            newFormId: "newMovieForm",
+            newFormId,
           }
     };
 
@@ -51,13 +53,15 @@ class MovieForm extends Component {
     };
 
     validateMovieExist = (values, imdbIDprop, setFieldError) => { //check if movie exist
-        if(this.isMovieExist(values.Title)) { //check by Title
-            setFieldError('Title', 'Already exist');
-            return true;
-        }
-        if(!imdbIDprop && this.isMovieExist(values.imdbID)) { //check by imdbID
-            setFieldError('imdbID', 'Already exist');
-            return true;
+        if(!imdbIDprop) {
+            if (this.isMovieExist(values.Title)) { //check by Title
+                setFieldError('Title', 'Already exist');
+                return true;
+            }
+            if (this.isMovieExist(values.imdbID)) { //check by imdbID
+                setFieldError('imdbID', 'Already exist');
+                return true;
+            }
         }
         return false;
     };
@@ -117,4 +121,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default  connect(mapStateToProps, {addMovie, editMovie})(MovieForm);
+export default connect(mapStateToProps, {addMovie, editMovie})(MovieForm);
