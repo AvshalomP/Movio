@@ -2,3 +2,24 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.loaderContainer {
+    margin: 10% auto;
+}
+
+.loaderTitle {
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: #4A4A4A;
+}
+
+@media screen and (max-width: 650px){
+    .loaderContainer {
+        margin: 20% auto;
+    }
+
+    .loaderTitle {
+        font-size: 30px;
+    }
+
+}

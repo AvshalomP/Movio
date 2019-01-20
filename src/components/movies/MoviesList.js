@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from '../styles/MovieList.module.css';
 import { connect } from 'react-redux';
 import { fetchMovies, deleteMovie } from "../../store/actions/movies";
+import { ProgressBar } from 'react-materialize';
 //components
 import MovieCard from './MovieCard';
 
@@ -27,7 +28,13 @@ class MoviesList extends Component {
 
         return (
             <div className={styles.container}>
-                {movies}
+                { movies.length ? movies
+                    : (
+                        <div className={styles.loaderContainer}>
+                            <div className={styles.loaderTitle}>Loading...</div>
+                            <ProgressBar />
+                        </div>
+                    )}
             </div>
         )
     }

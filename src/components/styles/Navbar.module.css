@@ -1,6 +1,7 @@
 .navbar {
     padding: 25px 30px;
     background: white;
+    box-shadow: 1px 1px 1px lightgrey;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -18,13 +19,14 @@ a {
     color: white;
     border-radius: 20px;
     padding: 10px 15px;
+    margin: 1px 1px;
 }
 
 .addBtn:hover {
-    opacity: 0.9;
+    opacity: 0.85;
 }
 
 .addBtn a {
-    color: white;
+    color: #E57373;
     font-size: 16px;
 }
