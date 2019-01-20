@@ -14,6 +14,12 @@ To see the app in action, go to [Movio](https://movio-t.herokuapp.com)
   * Edit Movie
   
   * Delete Movie
+  
+* Validation:
+  
+  * Form validation 
+  
+  * Field validation
 
 * Responsive web design
 
@@ -45,6 +51,8 @@ Some comments in the source code are self notes and therefore might not seem nec
 * [React](https://reactjs.org)
 * [Redux](https://redux.js.org)
 * [React Materialize](https://react-materialize.github.io/)
+* [Formik](https://jaredpalmer.com/formik/)
+* [Yup](https://github.com/jquense/yup)
 
 ### External API
 
