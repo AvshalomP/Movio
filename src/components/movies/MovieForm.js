@@ -50,24 +50,27 @@ class MovieForm extends Component {
         return isExist;
     };
 
+    validateMovieExist = (values, imdbIDprop, setFieldError) => { //check if movie exist
+        if(this.isMovieExist(values.Title)) { //check by Title
+            setFieldError('Title', 'Already exist');
+            return true;
+        }
+        if(!imdbIDprop && this.isMovieExist(values.imdbID)) { //check by imdbID
+            setFieldError('imdbID', 'Already exist');
+            return true;
+        }
+        return false;
+    };
+
     handleSubmit = (values, { resetForm , setFieldError }) => {
         const { editMovie, addMovie, closeModal } = this.props;
         const { imdbID } = this.props.movie;
         const Title = this.convertStringToTitleCase(values.Title);   //converting movie title to TitleCase
 
-        if(this.isMovieExist(values.Title)) { //check if movie exist
-            setFieldError('Title', 'Already exist');
-        } else if(!imdbID && this.isMovieExist(values.imdbID)) {
-            setFieldError('imdbID', 'Already exist');
-        } else {
+        if(!this.validateMovieExist(values, imdbID, setFieldError)) { //check if movie exist
             closeModal();
-            if (imdbID) {    //in edit mode imdbID is not passed
-                editMovie({...values, Title});
-            } else {
-                    addMovie({...values, Title});
-            }
+            imdbID ? editMovie({...values, Title}) : addMovie({...values, Title}); //in edit mode imdbID prop is not passed
             resetForm();
-
         }
 
     };
