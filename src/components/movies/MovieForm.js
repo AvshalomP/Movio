@@ -6,8 +6,8 @@ import { Formik, Form } from 'formik';
 import { formValidationSchema } from "../schema/validation/formValidationSchema";
 import { Button } from 'react-materialize';
 //components
-import Input from '../generic/Input';
-import ErrorFocus from '../generic/ErrorFocus';
+import Input from '../common/Input';
+import ErrorFocus from '../common/ErrorFocus';
 
 class MovieForm extends Component {
 
